@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="140" id="lgj-J6-ZiE" userLabel="Bookshelf Entry Cell">
+            <rect key="frame" x="0.0" y="0.0" width="556" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lgj-J6-ZiE" id="4kq-e4-iMG">
+                <rect key="frame" x="0.0" y="0.0" width="556" height="139.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="JSV-sK-LxP">
+                        <rect key="frame" x="28" y="19" width="64" height="100.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="fGU-Gr-v4O"/>
+                            <constraint firstAttribute="height" constant="100.5" id="pPB-g3-iXe"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z4T-yD-2Z8">
+                        <rect key="frame" x="112" y="19" width="416" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookshelf Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiV-Pd-CZC">
+                                <rect key="frame" x="0.0" y="0.0" width="183.5" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="## Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-Ki-GPL">
+                                <rect key="frame" x="0.0" y="39.5" width="72.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JSV-sK-LxP" firstAttribute="leading" secondItem="4kq-e4-iMG" secondAttribute="leadingMargin" constant="8" id="MhW-aL-Yqs"/>
+                    <constraint firstItem="JSV-sK-LxP" firstAttribute="top" secondItem="4kq-e4-iMG" secondAttribute="topMargin" constant="8" id="NTC-fe-wcI"/>
+                    <constraint firstItem="z4T-yD-2Z8" firstAttribute="top" secondItem="JSV-sK-LxP" secondAttribute="top" id="Ql7-2m-EbE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="z4T-yD-2Z8" secondAttribute="trailing" constant="8" id="k5w-L0-XtJ"/>
+                    <constraint firstItem="z4T-yD-2Z8" firstAttribute="leading" secondItem="JSV-sK-LxP" secondAttribute="trailing" constant="20" id="wwS-Ui-5Pz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="200" y="91.754122938530742"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="test image" width="128" height="201"/>
+    </resources>
+</document>
