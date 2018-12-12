@@ -242,40 +242,39 @@
                                 <rect key="frame" x="30" y="293" width="315" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Long Book Title name thats really long. So long in fact that we have to truncate it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-rX-XpD">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="29.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Author Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-4Y-f3X">
-                                        <rect key="frame" x="99" y="57" width="117.5" height="0.0"/>
+                                        <rect key="frame" x="99" y="37.5" width="117.5" height="19.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h6T-Lq-YGV">
-                                <rect key="frame" x="127.5" y="370" width="120" height="76.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h6T-Lq-YGV">
+                                <rect key="frame" x="115.5" y="370" width="144" height="76.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JeX-pI-Ied">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="26.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGa-O6-4GL">
-                                                <rect key="frame" x="0.0" y="0.0" width="63" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="87" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWa-1d-UYB">
-                                                <rect key="frame" x="71" y="0.0" width="51" height="26.5"/>
+                                                <rect key="frame" x="95" y="0.0" width="51" height="26.5"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-xe-c9Z">
-                                        <rect key="frame" x="0.0" y="46.5" width="120" height="30"/>
-                                        <color key="backgroundColor" red="0.1355539177" green="1" blue="0.092983124309999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Add To Bookshelf"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-xe-c9Z">
+                                        <rect key="frame" x="0.0" y="46.5" width="144" height="30"/>
+                                        <state key="normal" title="   Add To Bookshelf   "/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1"/>
@@ -341,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nk6-fB-VAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3007" y="192"/>
+            <point key="canvasLocation" x="3005.5999999999999" y="191.1544227886057"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="hvt-1P-qGx">
