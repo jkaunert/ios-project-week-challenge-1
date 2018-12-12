@@ -13,13 +13,13 @@
         <!--Bookshelves TableView-->
         <scene sceneID="qTT-Xd-o62">
             <objects>
-                <tableViewController id="MjD-ts-uzU" userLabel="Bookshelves TableView" sceneMemberID="viewController">
+                <tableViewController title="My Books" id="MjD-ts-uzU" userLabel="Bookshelves TableView" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5kS-aV-RDu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelf entry cell" rowHeight="140" id="X33-XD-SNl" userLabel="Bookshelf Entry Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelf entry cell" rowHeight="140" id="X33-XD-SNl" userLabel="Bookshelf Entry Cell" customClass="BookshelfEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X33-XD-SNl" id="L9R-ul-hpr">
@@ -59,8 +59,13 @@
                                         <constraint firstItem="T20-Nt-qBj" firstAttribute="leading" secondItem="grG-eD-C7W" secondAttribute="trailing" constant="20" id="tLr-O1-fdB"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookCountLabel" destination="o9G-Bm-4PE" id="KYJ-C4-jpy"/>
+                                    <outlet property="bookShelfCoverImage" destination="grG-eD-C7W" id="Ekl-iK-jvk"/>
+                                    <outlet property="bookShelfNameLabel" destination="WG1-pV-KyS" id="OS5-jn-cx9"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelf book entry cell" rowHeight="147" id="044-zx-ohW" userLabel="Book Entry Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book entry cell" rowHeight="147" id="044-zx-ohW" userLabel="Book Entry Cell" customClass="BookEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="168" width="375" height="147"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="044-zx-ohW" id="wCg-4b-mAz">
@@ -106,7 +111,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FN0-60-Gvn" kind="show" identifier="Bookshelf Detail Show" id="E1o-20-gHx"/>
+                                    <segue destination="FN0-60-Gvn" kind="show" identifier="Bookshelf book detail show" id="dcK-x6-gA2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -116,7 +121,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Books" id="Xyu-3a-UIO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMf-cX-y7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,7 +129,7 @@
         <!--Book Search TableView-->
         <scene sceneID="slc-UQ-nFX">
             <objects>
-                <tableViewController id="vcP-Gu-wDb" userLabel="Book Search TableView" sceneMemberID="viewController">
+                <tableViewController title="Search" id="vcP-Gu-wDb" userLabel="Book Search TableView" customClass="BookSearchTableViewController" customModule="ios_project_week_challenge_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ffa-oU-spp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,17 +138,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" placeholder="Search for books by title or author..." translatesAutoresizingMaskIntoConstraints="NO" id="0Lt-1X-IPQ">
-                                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vdB-8M-Abo">
                                     <rect key="frame" x="8" y="8" width="359" height="29"/>
                                     <segments>
                                         <segment title="Title"/>
                                         <segment title="Author"/>
+                                        <segment title="Everything"/>
                                     </segments>
                                 </segmentedControl>
+                                <searchBar contentMode="redraw" placeholder="Search for books by title or author..." translatesAutoresizingMaskIntoConstraints="NO" id="0Lt-1X-IPQ">
+                                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -157,22 +162,18 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book search results cell" rowHeight="147" id="SoJ-mS-hUB" userLabel="Book Entry Cell">
-                                <rect key="frame" x="0.0" y="142" width="375" height="147"/>
+                            <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book entry cell" rowHeight="218" id="SoJ-mS-hUB" userLabel="Book Entry Cell" customClass="BookEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142" width="375" height="218"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SoJ-mS-hUB" id="YNZ-A0-ZWh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-Fw-6kx">
-                                            <rect key="frame" x="24" y="19" width="64" height="100.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="ajJ-yx-ftx"/>
-                                                <constraint firstAttribute="height" constant="100.5" id="lQc-ri-CaF"/>
-                                            </constraints>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-Fw-6kx">
+                                            <rect key="frame" x="24" y="19" width="128" height="180"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ORU-gK-gZx">
-                                            <rect key="frame" x="108" y="19" width="243" height="46.5"/>
+                                            <rect key="frame" x="172" y="19" width="179" height="46.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-qL-96v">
                                                     <rect key="frame" x="0.0" y="0.0" width="105.5" height="46.5"/>
@@ -200,10 +201,14 @@
                                         <constraint firstItem="jbN-Fw-6kx" firstAttribute="top" secondItem="YNZ-A0-ZWh" secondAttribute="topMargin" constant="8" id="X0l-G8-Lh1"/>
                                         <constraint firstItem="jbN-Fw-6kx" firstAttribute="leading" secondItem="YNZ-A0-ZWh" secondAttribute="leadingMargin" constant="8" id="jTV-k7-aPx"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ORU-gK-gZx" secondAttribute="trailing" constant="8" id="kwh-7F-W5A"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jbN-Fw-6kx" secondAttribute="bottom" constant="8" id="ocx-GA-NhK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FN0-60-Gvn" kind="show" identifier="Book Search Detail View Show" id="xf8-6p-ZNd"/>
+                                    <outlet property="authorNameLabel" destination="udV-te-qEP" id="rwq-mD-5h0"/>
+                                    <outlet property="bookEntryCoverImage" destination="jbN-Fw-6kx" id="6gH-Ae-Zk4"/>
+                                    <outlet property="bookTitleLabel" destination="ggg-gH-lDS" id="j1L-hS-gjA"/>
+                                    <segue destination="FN0-60-Gvn" kind="show" identifier="showDetailFromSearch" id="rga-6O-sJV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -213,7 +218,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="OZB-fd-ayj"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchField" destination="0Lt-1X-IPQ" id="TDJ-F2-ZqO"/>
+                        <outlet property="searchType" destination="vdB-8M-Abo" id="N8c-Se-gFQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1df-tc-8XH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,7 +230,7 @@
         <!--Book Detail View-->
         <scene sceneID="ieg-g5-yn6">
             <objects>
-                <viewController id="FN0-60-Gvn" userLabel="Book Detail View" sceneMemberID="viewController">
+                <viewController title="Book Details" id="FN0-60-Gvn" userLabel="Book Detail View" customClass="BookDetailViewController" customModule="ios_project_week_challenge_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bp6-cF-foI" userLabel="Book DetailView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,13 +242,13 @@
                                 <rect key="frame" x="30" y="293" width="315" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Long Book Title name thats really long. So long in fact that we have to truncate it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-rX-XpD">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="29.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Author Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-4Y-f3X">
-                                        <rect key="frame" x="99" y="37.5" width="117.5" height="19.5"/>
+                                        <rect key="frame" x="99" y="57" width="117.5" height="0.0"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -325,6 +333,11 @@
                         <viewLayoutGuide key="safeArea" id="bAM-fC-A5O"/>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="detailBookAuthorNameLabel" destination="Jco-4Y-f3X" id="TPa-en-Nv7"/>
+                        <outlet property="detailBookCoverImageView" destination="Mft-b6-4Hf" id="bGP-YC-ROP"/>
+                        <outlet property="detailBookTitleLabel" destination="gOC-rX-XpD" id="tFI-jH-AZn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nk6-fB-VAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,6 +406,6 @@
         <image name="test image" width="128" height="201"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E1o-20-gHx"/>
+        <segue reference="rga-6O-sJV"/>
     </inferredMetricsTieBreakers>
 </document>
