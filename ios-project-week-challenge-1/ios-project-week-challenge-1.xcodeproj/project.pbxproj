@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ABA682E721C1AF8D001FD26F /* BookShelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA682E621C1AF8D001FD26F /* BookShelfController.swift */; };
+		ABA682E921C21D1C001FD26F /* BookshelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA682E821C21D1C001FD26F /* BookshelfModel.swift */; };
+		ABA682EB21C220AE001FD26F /* ModelUpdateClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA682EA21C220AE001FD26F /* ModelUpdateClient.swift */; };
+		ABA682ED21C2C27C001FD26F /* ShelvedBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA682EC21C2C27C001FD26F /* ShelvedBookDetailViewController.swift */; };
 		ABE63C8D21BF1CE2007B9101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63C8C21BF1CE2007B9101 /* AppDelegate.swift */; };
 		ABE63C9221BF1CE2007B9101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE63C9021BF1CE2007B9101 /* Main.storyboard */; };
 		ABE63C9421BF1CE3007B9101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE63C9321BF1CE3007B9101 /* Assets.xcassets */; };
@@ -16,7 +18,7 @@
 		ABE63CA121C02DBB007B9101 /* BookshelfEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE63CA021C02DBB007B9101 /* BookshelfEntryCell.xib */; };
 		ABE63CA321C03373007B9101 /* BookDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE63CA221C03373007B9101 /* BookDetailView.xib */; };
 		ABE63CA521C03985007B9101 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CA421C03985007B9101 /* ButtonExtension.swift */; };
-		ABE63CA821C065AF007B9101 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CA721C065AF007B9101 /* BookDetailViewController.swift */; };
+		ABE63CA821C065AF007B9101 /* BookSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CA721C065AF007B9101 /* BookSearchDetailViewController.swift */; };
 		ABE63CAB21C068B4007B9101 /* FirebaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CA921C068B4007B9101 /* FirebaseItem.swift */; };
 		ABE63CAC21C068B4007B9101 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CAA21C068B4007B9101 /* Firebase.swift */; };
 		ABE63CAF21C06904007B9101 /* BookSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CAE21C06904007B9101 /* BookSearchTableViewController.swift */; };
@@ -26,11 +28,13 @@
 		ABE63CB921C06A64007B9101 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CB821C06A64007B9101 /* SearchResultsController.swift */; };
 		ABE63CBB21C06BA6007B9101 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CBA21C06BA6007B9101 /* ResultType.swift */; };
 		ABE63CBD21C06BFC007B9101 /* BookSearchBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CBC21C06BFC007B9101 /* BookSearchBookModel.swift */; };
-		ABE63CBF21C06DEA007B9101 /* BookShelfBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CBE21C06DEA007B9101 /* BookShelfBookModel.swift */; };
+		ABE63CBF21C06DEA007B9101 /* BookShelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE63CBE21C06DEA007B9101 /* BookShelf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ABA682E621C1AF8D001FD26F /* BookShelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfController.swift; sourceTree = "<group>"; };
+		ABA682E821C21D1C001FD26F /* BookshelfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfModel.swift; sourceTree = "<group>"; };
+		ABA682EA21C220AE001FD26F /* ModelUpdateClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUpdateClient.swift; sourceTree = "<group>"; };
+		ABA682EC21C2C27C001FD26F /* ShelvedBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvedBookDetailViewController.swift; sourceTree = "<group>"; };
 		ABE63C8921BF1CE2007B9101 /* ios-project-week-challenge-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-project-week-challenge-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE63C8C21BF1CE2007B9101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE63C9121BF1CE2007B9101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,7 +45,7 @@
 		ABE63CA021C02DBB007B9101 /* BookshelfEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookshelfEntryCell.xib; sourceTree = "<group>"; };
 		ABE63CA221C03373007B9101 /* BookDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailView.xib; sourceTree = "<group>"; };
 		ABE63CA421C03985007B9101 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
-		ABE63CA721C065AF007B9101 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		ABE63CA721C065AF007B9101 /* BookSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchDetailViewController.swift; sourceTree = "<group>"; };
 		ABE63CA921C068B4007B9101 /* FirebaseItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseItem.swift; sourceTree = "<group>"; };
 		ABE63CAA21C068B4007B9101 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		ABE63CAE21C06904007B9101 /* BookSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +55,7 @@
 		ABE63CB821C06A64007B9101 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		ABE63CBA21C06BA6007B9101 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		ABE63CBC21C06BFC007B9101 /* BookSearchBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchBookModel.swift; sourceTree = "<group>"; };
-		ABE63CBE21C06DEA007B9101 /* BookShelfBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfBookModel.swift; sourceTree = "<group>"; };
+		ABE63CBE21C06DEA007B9101 /* BookShelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +128,9 @@
 				ABE63CB821C06A64007B9101 /* SearchResultsController.swift */,
 				ABE63CBA21C06BA6007B9101 /* ResultType.swift */,
 				ABE63CBC21C06BFC007B9101 /* BookSearchBookModel.swift */,
-				ABE63CBE21C06DEA007B9101 /* BookShelfBookModel.swift */,
-				ABA682E621C1AF8D001FD26F /* BookShelfController.swift */,
+				ABE63CBE21C06DEA007B9101 /* BookShelf.swift */,
+				ABA682E821C21D1C001FD26F /* BookshelfModel.swift */,
+				ABA682EA21C220AE001FD26F /* ModelUpdateClient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,7 +138,8 @@
 		ABE63CC121C0D0FA007B9101 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ABE63CA721C065AF007B9101 /* BookDetailViewController.swift */,
+				ABE63CA721C065AF007B9101 /* BookSearchDetailViewController.swift */,
+				ABA682EC21C2C27C001FD26F /* ShelvedBookDetailViewController.swift */,
 				ABE63CB021C06932007B9101 /* BookshelvesTableViewController.swift */,
 				ABE63CAE21C06904007B9101 /* BookSearchTableViewController.swift */,
 			);
@@ -226,15 +232,17 @@
 				ABE63CAC21C068B4007B9101 /* Firebase.swift in Sources */,
 				ABE63CA521C03985007B9101 /* ButtonExtension.swift in Sources */,
 				ABE63CB121C06932007B9101 /* BookshelvesTableViewController.swift in Sources */,
-				ABE63CBF21C06DEA007B9101 /* BookShelfBookModel.swift in Sources */,
+				ABE63CBF21C06DEA007B9101 /* BookShelf.swift in Sources */,
 				ABE63CB321C069AC007B9101 /* BookEntryCell.swift in Sources */,
+				ABA682EB21C220AE001FD26F /* ModelUpdateClient.swift in Sources */,
 				ABE63CBB21C06BA6007B9101 /* ResultType.swift in Sources */,
+				ABA682E921C21D1C001FD26F /* BookshelfModel.swift in Sources */,
+				ABA682ED21C2C27C001FD26F /* ShelvedBookDetailViewController.swift in Sources */,
 				ABE63CBD21C06BFC007B9101 /* BookSearchBookModel.swift in Sources */,
 				ABE63CAB21C068B4007B9101 /* FirebaseItem.swift in Sources */,
 				ABE63C8D21BF1CE2007B9101 /* AppDelegate.swift in Sources */,
 				ABE63CAF21C06904007B9101 /* BookSearchTableViewController.swift in Sources */,
-				ABE63CA821C065AF007B9101 /* BookDetailViewController.swift in Sources */,
-				ABA682E721C1AF8D001FD26F /* BookShelfController.swift in Sources */,
+				ABE63CA821C065AF007B9101 /* BookSearchDetailViewController.swift in Sources */,
 				ABE63CB521C069C7007B9101 /* BookshelfEntryCell.swift in Sources */,
 				ABE63CB921C06A64007B9101 /* SearchResultsController.swift in Sources */,
 			);

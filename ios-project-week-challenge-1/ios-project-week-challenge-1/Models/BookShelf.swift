@@ -1,14 +1,18 @@
 import Foundation
 
-struct BookShelf {
+class BookShelf: Codable, FirebaseItem {
+    var recordIdentifier: String
+    
     let name: String
     let contents: [Book] = []
     let imageLink: String?
 }
 
-struct Book {
+class Book: Codable, FirebaseItem {
+    var recordIdentifier: String
+    
     let title: String
-    let authors: [String]?
+    let authors: [String]
     //let publisher: String?
     //let publishedDate: String?
     //let description: String?
@@ -16,7 +20,7 @@ struct Book {
     //let averageRating: Double?
     //let ratingsCount: Int?
     //let imageLinks: ImageLinks
-    let coverImageLink: String
+    let coverImageLink: String // <- use the cover for the newest book on the shelf?
     //let language: Language?
     //let previewLink: String?
     //let infoLink: String?

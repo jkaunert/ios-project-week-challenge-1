@@ -68,7 +68,7 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? BookDetailViewController,
+        guard let destination = segue.destination as? BookSearchDetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         
             let result = SearchResultsController.shared.searchResults[indexPath.row]

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class BookshelfEntryCell: UITableViewCell {
-    
+    static let reuseIdentifier = "bookshelf entry cell"
     
     @IBOutlet weak var bookShelfCoverImage: UIImageView!
     
