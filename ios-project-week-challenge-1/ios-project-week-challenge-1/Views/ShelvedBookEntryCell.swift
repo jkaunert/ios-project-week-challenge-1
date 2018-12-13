@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-class BookEntryCell: UITableViewCell {
-    //static let reuseIdentifier = "book entry cell"
+class ShelvedBookEntryCell: UITableViewCell {
+    static let reuseIdentifier = "shelved book entry cell"
     
     @IBOutlet weak var bookEntryCoverImage: UIImageView!
     

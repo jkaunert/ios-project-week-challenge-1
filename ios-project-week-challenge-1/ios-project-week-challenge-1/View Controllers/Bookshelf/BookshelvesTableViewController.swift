@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class BookshelvesTableViewController: UITableViewController {
+class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
     
     
     
@@ -77,7 +77,7 @@ class BookshelvesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BookshelfModel.shared.delegate = self as! ModelUpdateClient
+        BookshelfModel.shared.delegate = self
     }
     
     func modelDidUpdate() {
@@ -87,10 +87,10 @@ class BookshelvesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow
             else { return }
-        guard let destination = segue.destination as? BookSearchDetailViewController
+        guard let destination = segue.destination as? ShelvedBooksTableViewController
             else { return }
         
-        destination.bookshelf = BookshelfModel.shared.allBookshelves(forIndex: indexPath.row)
+        destination.bookshelfDetails = BookshelfModel.shared.bookshelfAt(at: indexPath).contents
     }
     
     

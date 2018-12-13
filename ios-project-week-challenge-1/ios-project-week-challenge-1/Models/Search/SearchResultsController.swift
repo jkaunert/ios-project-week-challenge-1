@@ -88,7 +88,7 @@ class SearchResultsController {
                 //decode data into array of results
             
                 let results = try decoder.decode(BookSearch.self, from: data)
-                searchResults = results.items
+                searchResults = results.items!
                 print(searchResults)
                 
                 

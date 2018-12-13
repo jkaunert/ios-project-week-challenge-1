@@ -8,7 +8,7 @@ class ShelvedBookDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailBookTitleLabel.text = bookDetails?.title
-        detailBookAuthorNameLabel.text = bookDetails?.authors[0]
+        detailBookAuthorNameLabel.text = bookDetails?.authors?[0]
     }
     
     

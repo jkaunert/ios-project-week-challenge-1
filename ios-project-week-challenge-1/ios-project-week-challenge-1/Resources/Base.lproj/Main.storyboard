@@ -87,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book entry cell" rowHeight="250" id="gi9-LW-bON" userLabel="Book Entry Cell" customClass="BookEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shelved book entry cell" rowHeight="250" id="gi9-LW-bON" userLabel="Shelved Book Entry Cell" customClass="ShelvedBookEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gi9-LW-bON" id="ZDJ-4e-nbS">
@@ -130,6 +130,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="authorNameLabel" destination="zNz-xL-mvs" id="6UB-gE-nW6"/>
+                                    <outlet property="bookEntryCoverImage" destination="UBD-py-liq" id="6ed-kW-nXO"/>
+                                    <outlet property="bookTitleLabel" destination="Ep3-UT-WAM" id="hw5-Dr-1Ri"/>
                                     <segue destination="9gD-c5-ey4" kind="show" identifier="bookshelf details to book detail show" id="NqJ-Mb-oWL"/>
                                 </connections>
                             </tableViewCell>
@@ -180,7 +183,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book entry cell" rowHeight="218" id="SoJ-mS-hUB" userLabel="Book Entry Cell" customClass="BookEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
+                            <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book search entry cell" rowHeight="218" id="SoJ-mS-hUB" userLabel="Book Entry Cell" customClass="BookSearchEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="142" width="375" height="218"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SoJ-mS-hUB" id="YNZ-A0-ZWh">

@@ -6,8 +6,8 @@ class BookSearchDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        detailBookTitleLabel.text = bookDetails?.volumeInfo.title
-        detailBookAuthorNameLabel.text = bookDetails?.volumeInfo.authors![0]
+        detailBookTitleLabel.text = bookDetails?.volumeInfo?.title
+        detailBookAuthorNameLabel.text = bookDetails?.volumeInfo?.authors![0]
     }
     
     

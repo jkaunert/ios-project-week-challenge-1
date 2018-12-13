@@ -1,15 +1,15 @@
 import Foundation
 
 struct BookSearch: Codable {
-    let kind: String
-    let totalItems: Int
-    let items: [Item]
+    let kind: String?
+    let totalItems: Int?
+    let items: [Item]?
 }
 
 struct Item: Codable {
-    let id, etag: String
-    let selfLink: String
-    let volumeInfo: VolumeInfo
+    let id, etag: String?
+    let selfLink: String?
+    let volumeInfo: VolumeInfo?
 }
 
 enum Country: String, Codable {
@@ -18,7 +18,7 @@ enum Country: String, Codable {
 
 
 struct VolumeInfo: Codable {
-    let title: String
+    let title: String?
     let authors: [String]?
     let publisher: String?
     let publishedDate: String?
@@ -26,7 +26,7 @@ struct VolumeInfo: Codable {
     let pageCount: Int?
     let averageRating: Double?
     let ratingsCount: Int?
-    let imageLinks: ImageLinks
+    let imageLinks: ImageLinks?
     let language: Language?
     let previewLink: String?
     let infoLink: String?
@@ -34,7 +34,7 @@ struct VolumeInfo: Codable {
 }
 
 struct ImageLinks: Codable {
-    let smallThumbnail, thumbnail: String
+    let smallThumbnail, thumbnail: String?
 }
 
 
