@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 struct BookSearch: Codable {
     let kind: String?
@@ -20,6 +21,16 @@ enum Country: String, Codable {
 struct VolumeInfo: Codable {
     let title: String?
     let authors: [String]?
+    var authorString: String {
+        get {
+            guard (authors != nil) || (!(authors?.isEmpty)!) else { return "Anonymous"}
+            var newValue: String = ""
+            for eachAuthor in authors! {
+                newValue += eachAuthor + " "
+            }
+            return newValue
+        }
+    }
     let publisher: String?
     let publishedDate: String?
     let description: String?
@@ -31,6 +42,12 @@ struct VolumeInfo: Codable {
     let previewLink: String?
     let infoLink: String?
     let subtitle: String?
+    var imageLink: String? {
+        
+        get {
+            return self.imageLinks?.smallThumbnail
+        }
+    }
 }
 
 struct ImageLinks: Codable {

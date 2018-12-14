@@ -59,7 +59,8 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
         // Configure the cell...
         let result = SearchResultsController.shared.searchResults[indexPath.row]
         
-       // cell.bookEntryCoverImage.image = #imageLiteral(resourceName: "content.jpeg")
+        //var tempImage.loadImageFrom(url: URL(string: result.volumeInfo?.imageLink)!)
+        cell.bookEntryCoverImage.loadImageFrom(url: URL(string: (result.volumeInfo?.imageLink)!)!)
         cell.authorNameLabel.text = result.volumeInfo?.authors?[0] // <- totally hack-y. fix this later
         cell.bookTitleLabel.text = result.volumeInfo?.title
         

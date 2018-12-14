@@ -33,6 +33,7 @@
 		ABEF3D1521C2E2B9009EC356 /* ShelvedBookEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF3D1421C2E2B9009EC356 /* ShelvedBookEntryCell.swift */; };
 		ABEF3D1721C2ECDA009EC356 /* ShelvedBooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF3D1621C2ECDA009EC356 /* ShelvedBooksModel.swift */; };
 		ABEF3D1921C2EE80009EC356 /* ShelvedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF3D1821C2EE80009EC356 /* ShelvedBook.swift */; };
+		ABEF3D1B21C32894009EC356 /* GetImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF3D1A21C32894009EC356 /* GetImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		ABEF3D1421C2E2B9009EC356 /* ShelvedBookEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvedBookEntryCell.swift; sourceTree = "<group>"; };
 		ABEF3D1621C2ECDA009EC356 /* ShelvedBooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvedBooksModel.swift; sourceTree = "<group>"; };
 		ABEF3D1821C2EE80009EC356 /* ShelvedBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvedBook.swift; sourceTree = "<group>"; };
+		ABEF3D1A21C32894009EC356 /* GetImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				ABE63C8C21BF1CE2007B9101 /* AppDelegate.swift */,
+				ABEF3D1A21C32894009EC356 /* GetImageExtension.swift */,
 				ABE63CC021C0D0DB007B9101 /* Models */,
 				ABE63CC121C0D0FA007B9101 /* View Controllers */,
 				ABE63CC221C0D108007B9101 /* Views */,
@@ -281,6 +284,7 @@
 				ABEF3D0F21C2DF8D009EC356 /* ShelvedBooksTableViewController.swift in Sources */,
 				ABEF3D1921C2EE80009EC356 /* ShelvedBook.swift in Sources */,
 				ABEF3D1721C2ECDA009EC356 /* ShelvedBooksModel.swift in Sources */,
+				ABEF3D1B21C32894009EC356 /* GetImageExtension.swift in Sources */,
 				ABA682EB21C220AE001FD26F /* ModelUpdateClient.swift in Sources */,
 				ABE63CBB21C06BA6007B9101 /* ResultType.swift in Sources */,
 				ABA682E921C21D1C001FD26F /* BookshelfModel.swift in Sources */,
