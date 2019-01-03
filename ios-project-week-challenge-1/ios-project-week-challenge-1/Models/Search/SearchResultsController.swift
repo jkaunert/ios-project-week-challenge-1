@@ -9,10 +9,10 @@ class SearchResultsController {
     let endpoint = "https://www.googleapis.com/books/v1/volumes?"
     let key = "AIzaSyCWBbRuIyE8lAmu-s-U1mJLKkDi_fldYDQ"
     let testURL: URL! = URL(string: "https://www.googleapis.com/books/v1/volumes?q=Star%20wars&intitle:=Star%20wars&maxResults=40&key=AIzaSyCWBbRuIyE8lAmu-s-U1mJLKkDi_fldYDQ")
-     var searchResults: [Item] = []
+    var searchResults: [Item] = []
     
     func performSearch(with searchTerm: String, resultType: ResultType, completion: @escaping ([Item]?, Error?) -> Void) {
-        var searchResults: [Item] = []
+        self.searchResults = []
         // base URL for search
         guard let baseURL = URL(string: endpoint) else {
             fatalError("Unable to create baseURL")
@@ -88,12 +88,12 @@ class SearchResultsController {
                 //decode data into array of results
             
                 let results = try decoder.decode(BookSearch.self, from: data)
-                searchResults = results.items!
-                print(searchResults)
+                self.searchResults = results.items!
+                print(self.searchResults)
                 
                 
                 // return to completion handler
-                completion(searchResults, nil)
+                completion(self.searchResults, nil)
                 
             } catch {
                 NSLog("Unable to decode data: \(error)")

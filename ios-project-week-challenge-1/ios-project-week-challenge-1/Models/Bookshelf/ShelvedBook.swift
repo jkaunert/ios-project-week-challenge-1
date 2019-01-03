@@ -2,11 +2,11 @@ import Foundation
 
 
 class Book: Codable, FirebaseItem {
-    var recordIdentifier: String = "" // Firebase
+    var recordIdentifier: String // Firebase
     
     var title: String?
     var authors: [String]? // mutate to String during init
-    //var authorString: String = ""
+
     var publisher: String?
     var publishedDate: String?
     var description: String?
@@ -15,7 +15,7 @@ class Book: Codable, FirebaseItem {
     var ratingsCount: Int?
     var imageLinks: ImageLinks?
     var coverImageLink: String? // compute String from imageLinks at init
-    var language: Language? // compute String from language at init
+    //var language: Language? // compute String from language at init
     var previewLink: String?
     var infoLink: String?
     var subtitle: String?
@@ -35,6 +35,7 @@ class Book: Codable, FirebaseItem {
 //    }
 
     init(
+     recordIdentifier: String,
      title: String?,
      authors: [String]?,
      authorString: String?,
@@ -46,11 +47,12 @@ class Book: Codable, FirebaseItem {
      ratingsCount: Int?,
      imageLinks: ImageLinks?,
      imageLink: String?,
-     language: Language?,
+     //language: Language?,
      previewLink: String?,
      infoLink: String?,
      subtitle: String?) {
         
+        self.recordIdentifier = recordIdentifier
         self.title = title
         self.authors = authors //  FIXME: make computed - mutate to string
         self.publisher = publisher
@@ -60,7 +62,7 @@ class Book: Codable, FirebaseItem {
         self.averageRating = averageRating
         self.ratingsCount = ratingsCount
         self.imageLinks = imageLinks
-        self.language = language
+        //self.language = language
         self.previewLink = previewLink
         self.infoLink = infoLink
         self.subtitle = subtitle
@@ -68,5 +70,16 @@ class Book: Codable, FirebaseItem {
         self.authorString = authorString
         self.imageLink = imageLink
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case recordIdentifier, title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle
+    }
+}
+
+class AllShelvedBooks: Codable, FirebaseItem {
+    var recordIdentifier: String = "" // Firebase
+    var contents: [Book] = []
+    var bookCount: Int { return contents.count }
+    
 }
 

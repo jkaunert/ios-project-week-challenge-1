@@ -4,50 +4,48 @@ import UIKit
 class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
     
     
-    
-
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    @IBAction func addNewBookshelf(_ sender: UIBarButtonItem) {
+        //test
+        let newBookshelf = BookShelf(name: "Test")
+        print(newBookshelf)
+        let newBook = Book(recordIdentifier: "", title: "The Help", authors: ["Carl Someone"], authorString: "Carl Someone", publisher: "NoBody", publishedDate: "1994", description: "Something", pageCount: 420, averageRating: 3.9, ratingsCount: 420, imageLinks: nil, imageLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", previewLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", infoLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", subtitle: "This is some BS")
+        print(newBook)
+        newBookshelf.contents?.append(newBook)
+        print(newBookshelf)
+        BookshelfModel.shared.allBookshelves.contents?.append(newBookshelf)
+        print(BookshelfModel.shared.allBookshelves.contents)
+        Firebase.save(item: newBookshelf)
+        //Firebase.save(item: newBook)
+        modelDidUpdate()
+        
+        
     }
     
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BookshelfModel.shared.allBookshelves.count
-//        switch section {
-//        case 0:
-//            return 1
-//        case 1:
-//            return Model.shared.count()
-//        default:
-//            fatalError("Illegal section")
-//        }
+        print(BookshelfModel.shared.allBookshelves.contents?.count)
+        return BookshelfModel.shared.allBookshelves.contents!.count
+
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookshelfEntryCell.reuseIdentifier, for: indexPath) as? BookshelfEntryCell
-                       else { fatalError("Unable to dequeue entry cell") }
-//        if indexPath.section == 0 {
-//            // handle the single entry cell
-//            // return it
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: EntryCell.reuseIdentifier, for: indexPath) as? EntryCell
-//                else { fatalError("Unable to dequeue entry cell") }
-//
-//            cell.nameField.text = "" // Coder paranoia
-//            cell.cohortField.text = ""
-//
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookshelfEntryCell.reuseIdentifier, for: indexPath) as? BookshelfEntryCell
+//                       else { fatalError("Unable to dequeue entry cell") }
+        let cell = tableView.dequeueReusableCell(withIdentifier: BookshelfEntryCell.reuseIdentifier, for: indexPath) as! BookshelfEntryCell
+        // Configure the cell...
+        let result = BookshelfModel.shared.allBookshelves.contents![indexPath.row]
+        
+        // load book cover thumbnail image from URL
+        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: (result.contents?[0].imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
+        cell.bookShelfNameLabel.text = result.name
+        //cell.bookCountLabel.text = String(result?.bookCount)
             return cell
         }
-        
-        // do anything related to person cell
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonCell.reuseIdentifier, for: indexPath) as? PersonCell
-//            else { fatalError("Unable to dequeue person cell") }
-//
-//        let person = Model.shared.person(forIndex: indexPath.row)
-//        cell.nameLabel.text = person.name
-//        cell.cohortLabel.text = person.cohort
-//        return cell
-//    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,12 +55,22 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         activity.startAnimating()
         navigationItem.titleView = activity
         
-        
+//        if BookshelfModel.shared.countAllBookshelves() == 0 {
+//            BookshelfModel.shared.addNewBookshelf(bookshelf: BookShelf(name: "Favorites")) {
+//                BookshelfModel.shared.delegate?.modelDidUpdate()
+//                //Firebase.save(item: BookshelfModel.shared.allBookshelves)
+//            }
+//        }
         // Fetch records from Firebase and then reload the table view
-        // Note: this may be significantly delayed.
         Firebase<BookShelf>.fetchRecords { allBookshelves in
             if let allBookshelves = allBookshelves {
-                BookshelfModel.shared.allBookshelves = allBookshelves  // breaks encapsulation, hacked it instead due to time constriants
+                if BookshelfModel.shared.countAllBookshelves() == 0 {
+                    let newBookshelf = BookShelf(name: "Favorites")
+                    BookshelfModel.shared.addNewBookshelf(bookshelf: newBookshelf) {
+                        
+                    }
+                }
+                BookshelfModel.shared.allBookshelves.contents = allBookshelves  // breaks encapsulation, hacked it instead due to time constriants
                 
                 // Comment this out to show what it looks like while waiting
                 DispatchQueue.main.async {
@@ -84,6 +92,7 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         tableView.reloadData()
     }
     
+    var bookshelfDetails: Book?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow
             else { return }
@@ -94,7 +103,7 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
     }
     
     
-    // FIXME: Update the person, update Firebase, and reload data
+    // Update the records, update Firebase, and reload data
     override func tableView(_ tableViewPassedToUs: UITableView, didSelectRowAt indexPath: IndexPath) {
         BookshelfModel.shared.updateBookshelf(at: indexPath) {
             self.tableView.reloadData()
@@ -105,7 +114,7 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         
         guard editingStyle == .delete else { return }
         
-        // FIXME: Delete an item, update Firebase, update model, and reload data
+        // Delete an item, update Firebase, update model, and reload data
         BookshelfModel.shared.deleteBookshelf(at: indexPath) {
             self.tableView.reloadData()
         }

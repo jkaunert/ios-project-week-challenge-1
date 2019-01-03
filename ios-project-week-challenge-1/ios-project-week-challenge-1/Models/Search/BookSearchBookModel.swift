@@ -19,11 +19,14 @@ enum Country: String, Codable {
 
 
 struct VolumeInfo: Codable {
+    let recordIdentifier: String?
     let title: String?
     let authors: [String]?
     var authorString: String {
         get {
-            guard (authors != nil) || (!(authors?.isEmpty)!) else { return "Anonymous"}
+            guard (authors != nil) else {
+                let newValue = "Anonymous"
+                return newValue }
             var newValue: String = ""
             for eachAuthor in authors! {
                 newValue += eachAuthor + " "
@@ -38,14 +41,14 @@ struct VolumeInfo: Codable {
     let averageRating: Double?
     let ratingsCount: Int?
     let imageLinks: ImageLinks?
-    let language: Language?
+    //let language: Language?
     let previewLink: String?
     let infoLink: String?
     let subtitle: String?
     var imageLink: String? {
         
         get {
-            return self.imageLinks?.smallThumbnail
+            return self.imageLinks?.smallThumbnail 
         }
     }
 }
@@ -63,13 +66,14 @@ enum TypeEnum: String, Codable {
 
 enum Language: String, Codable {
     case en = "en"
+    case es = "es"
 }
 
 
-private enum CodingKeys: String, CodingKey {
-    case title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle
+enum CodingKeys: String, CodingKey {
+    case recordIdentifier, title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle, smallThumbnail, thumbnail, Language, language
 }
 
 struct SearchResults: Codable {
-    var items: [BookSearch]
+    var items: [BookSearch]?
 }

@@ -13,31 +13,30 @@
         <!--Bookshelves TableView-->
         <scene sceneID="qTT-Xd-o62">
             <objects>
-                <tableViewController title="My Books" id="MjD-ts-uzU" userLabel="Bookshelves TableView" sceneMemberID="viewController">
+                <tableViewController title="My Books" id="MjD-ts-uzU" userLabel="Bookshelves TableView" customClass="BookshelvesTableViewController" customModule="ios_project_week_challenge_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5kS-aV-RDu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelf entry cell" rowHeight="140" id="X33-XD-SNl" userLabel="Bookshelf Entry Cell" customClass="BookshelfEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelf entry cell" rowHeight="220" id="X33-XD-SNl" userLabel="Bookshelf Entry Cell" customClass="BookshelfEntryCell" customModule="ios_project_week_challenge_1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X33-XD-SNl" id="L9R-ul-hpr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X33-XD-SNl" id="L9R-ul-hpr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="grG-eD-C7W">
-                                            <rect key="frame" x="24" y="19" width="64" height="100.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="grG-eD-C7W">
+                                            <rect key="frame" x="24" y="19" width="128" height="192.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100.5" id="HUI-yu-nb4"/>
-                                                <constraint firstAttribute="width" constant="64" id="UTS-E4-cFB"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="g32-4g-NUP"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T20-Nt-qBj">
-                                            <rect key="frame" x="108" y="19" width="243" height="60"/>
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T20-Nt-qBj">
+                                            <rect key="frame" x="172" y="19" width="179" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookshelf Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG1-pV-KyS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="183.5" height="31.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="179" height="31.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,6 +51,7 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="grG-eD-C7W" secondAttribute="bottom" constant="8" id="DsP-Uc-Eds"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="T20-Nt-qBj" secondAttribute="trailing" constant="8" id="Eje-uG-R0X"/>
                                         <constraint firstItem="grG-eD-C7W" firstAttribute="top" secondItem="L9R-ul-hpr" secondAttribute="topMargin" constant="8" id="SYy-jR-E7k"/>
                                         <constraint firstItem="T20-Nt-qBj" firstAttribute="top" secondItem="grG-eD-C7W" secondAttribute="top" id="ia6-Cf-Z5s"/>
@@ -63,7 +63,7 @@
                                     <outlet property="bookCountLabel" destination="o9G-Bm-4PE" id="KYJ-C4-jpy"/>
                                     <outlet property="bookShelfCoverImage" destination="grG-eD-C7W" id="Ekl-iK-jvk"/>
                                     <outlet property="bookShelfNameLabel" destination="WG1-pV-KyS" id="OS5-jn-cx9"/>
-                                    <segue destination="LPu-qt-c2M" kind="show" identifier="bookshelf to bookshelf details show" id="PeH-U0-iif"/>
+                                    <segue destination="LPu-qt-c2M" kind="show" identifier="" id="PeH-U0-iif"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,7 +72,13 @@
                             <outlet property="delegate" destination="MjD-ts-uzU" id="WZB-NJ-cP6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Bookshelves" id="Xyu-3a-UIO"/>
+                    <navigationItem key="navigationItem" title="My Bookshelves" id="Xyu-3a-UIO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mL4-Ia-5nS">
+                            <connections>
+                                <action selector="addNewBookshelf:" destination="MjD-ts-uzU" id="Egq-7u-Oj1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMf-cX-y7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,7 +87,7 @@
         <!--Bookshelf Detail-->
         <scene sceneID="OIB-jQ-bfl">
             <objects>
-                <tableViewController title="Bookshelf Detail" id="LPu-qt-c2M" sceneMemberID="viewController">
+                <tableViewController title="Bookshelf Detail" id="LPu-qt-c2M" customClass="ShelvedBooksTableViewController" customModule="ios_project_week_challenge_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g7h-PW-tDm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,7 +100,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="UBD-py-liq">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="UBD-py-liq">
                                             <rect key="frame" x="24" y="19" width="128" height="222.5"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kTl-Bl-IC1">
@@ -133,7 +139,7 @@
                                     <outlet property="authorNameLabel" destination="zNz-xL-mvs" id="6UB-gE-nW6"/>
                                     <outlet property="bookEntryCoverImage" destination="UBD-py-liq" id="6ed-kW-nXO"/>
                                     <outlet property="bookTitleLabel" destination="Ep3-UT-WAM" id="hw5-Dr-1Ri"/>
-                                    <segue destination="9gD-c5-ey4" kind="show" identifier="bookshelf details to book detail show" id="NqJ-Mb-oWL"/>
+                                    <segue destination="9gD-c5-ey4" kind="show" identifier="" id="NqJ-Mb-oWL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,22 +196,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-Fw-6kx">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-Fw-6kx">
                                             <rect key="frame" x="24" y="19" width="128" height="180"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ORU-gK-gZx">
                                             <rect key="frame" x="172" y="19" width="179" height="46.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-qL-96v">
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-qL-96v">
                                                     <rect key="frame" x="0.0" y="0.0" width="105.5" height="46.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-gH-lDS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-gH-lDS">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Book Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udV-te-qEP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Book Author" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udV-te-qEP">
                                                             <rect key="frame" x="0.0" y="28.5" width="105.5" height="18"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <nil key="textColor"/>
@@ -221,7 +227,7 @@
                                         <constraint firstItem="ORU-gK-gZx" firstAttribute="leading" secondItem="jbN-Fw-6kx" secondAttribute="trailing" constant="20" id="PXx-Fj-weu"/>
                                         <constraint firstItem="jbN-Fw-6kx" firstAttribute="top" secondItem="YNZ-A0-ZWh" secondAttribute="topMargin" constant="8" id="X0l-G8-Lh1"/>
                                         <constraint firstItem="jbN-Fw-6kx" firstAttribute="leading" secondItem="YNZ-A0-ZWh" secondAttribute="leadingMargin" constant="8" id="jTV-k7-aPx"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ORU-gK-gZx" secondAttribute="trailing" constant="8" id="kwh-7F-W5A"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ORU-gK-gZx" secondAttribute="trailing" priority="250" constant="8" id="kwh-7F-W5A"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="jbN-Fw-6kx" secondAttribute="bottom" constant="8" id="ocx-GA-NhK"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -256,11 +262,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="Mft-b6-4Hf">
-                                <rect key="frame" x="123.5" y="72" width="128" height="201"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="Mft-b6-4Hf">
+                                <rect key="frame" x="123.5" y="184" width="128" height="201"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-Iz-Xr2">
-                                <rect key="frame" x="30" y="293" width="315" height="91"/>
+                                <rect key="frame" x="30" y="405" width="315" height="91"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Long Book Title name thats really long. So long in fact that we have to truncate it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-rX-XpD">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="63.5"/>
@@ -277,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h6T-Lq-YGV">
-                                <rect key="frame" x="60" y="404" width="255" height="30"/>
+                                <rect key="frame" x="60" y="516" width="255" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-xe-c9Z">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="30"/>
@@ -307,7 +313,7 @@
                             <constraint firstItem="h6T-Lq-YGV" firstAttribute="centerX" secondItem="bp6-cF-foI" secondAttribute="centerX" id="PeV-1k-79X"/>
                             <constraint firstItem="qXW-Iz-Xr2" firstAttribute="top" secondItem="Mft-b6-4Hf" secondAttribute="bottom" constant="20" id="ZTJ-x0-crl"/>
                             <constraint firstItem="Mft-b6-4Hf" firstAttribute="centerX" secondItem="bp6-cF-foI" secondAttribute="centerX" id="gXe-5G-lXb"/>
-                            <constraint firstItem="Mft-b6-4Hf" firstAttribute="top" secondItem="bAM-fC-A5O" secondAttribute="top" constant="8" id="iio-Th-c2O"/>
+                            <constraint firstItem="Mft-b6-4Hf" firstAttribute="top" secondItem="bAM-fC-A5O" secondAttribute="top" constant="120" id="iio-Th-c2O"/>
                             <constraint firstItem="qXW-Iz-Xr2" firstAttribute="leading" secondItem="bAM-fC-A5O" secondAttribute="leading" constant="30" id="kgE-VW-sHi"/>
                             <constraint firstItem="bAM-fC-A5O" firstAttribute="trailing" secondItem="h6T-Lq-YGV" secondAttribute="trailing" constant="60" id="khu-W8-PJw"/>
                             <constraint firstItem="h6T-Lq-YGV" firstAttribute="top" secondItem="qXW-Iz-Xr2" secondAttribute="bottom" constant="20" id="yoI-H5-4w2"/>
@@ -390,7 +396,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="kwn-VX-9ix">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test image" translatesAutoresizingMaskIntoConstraints="NO" id="kwn-VX-9ix">
                                 <rect key="frame" x="123.5" y="72" width="128" height="201"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-Rt-UXY">

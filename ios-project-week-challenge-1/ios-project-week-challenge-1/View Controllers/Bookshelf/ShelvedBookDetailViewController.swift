@@ -3,12 +3,12 @@ import UIKit
 
 class ShelvedBookDetailViewController: UIViewController {
     
-    var bookDetails: Book?
+    var bookDetails: Book!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailBookTitleLabel.text = bookDetails?.title
-        detailBookAuthorNameLabel.text = bookDetails?.authors?[0]
+        detailBookAuthorNameLabel.text = bookDetails?.authors?[0] ?? "unknown"
     }
     
     
@@ -20,9 +20,11 @@ class ShelvedBookDetailViewController: UIViewController {
     
     @IBOutlet weak var didReadStatusLabel: UILabel!
     @IBAction func didReadStatusSwitch(_ sender: Any) {
+        
     }
     
     @IBAction func removeFromShelf(_ sender: Any) {
+        
     }
     
     @IBOutlet weak var writeAReviewLabel: UILabel!

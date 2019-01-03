@@ -7,7 +7,8 @@ class BookSearchDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailBookTitleLabel.text = bookDetails?.volumeInfo?.title
-        detailBookAuthorNameLabel.text = bookDetails?.volumeInfo?.authors![0]
+        detailBookAuthorNameLabel.text = bookDetails?.volumeInfo?.authorString
+        detailBookCoverImageView.loadImageFrom(url: URL(string: (bookDetails?.volumeInfo?.imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
     }
     
     
@@ -18,6 +19,9 @@ class BookSearchDetailViewController: UIViewController {
     
     
     @IBAction func addToShelf(_ sender: Any) {
+        ShelvedBooksModel.shared.addNewBook(book: bookDetails!, to: "Favorites") {
+            BookshelfModel.shared.delegate?.modelDidUpdate()
+        }
     }
     
     // possibly add review or summary from Google Books API, as user review
