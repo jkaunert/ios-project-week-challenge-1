@@ -19,7 +19,7 @@ enum Country: String, Codable {
 
 
 struct VolumeInfo: Codable {
-    let recordIdentifier: String?
+    lazy var recordIdentifier: String = " "
     let title: String?
     let authors: [String]?
     var authorString: String {

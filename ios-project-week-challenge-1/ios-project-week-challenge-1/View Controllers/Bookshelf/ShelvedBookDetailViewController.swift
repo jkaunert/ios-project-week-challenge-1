@@ -3,12 +3,12 @@ import UIKit
 
 class ShelvedBookDetailViewController: UIViewController {
     
-    var bookDetails: Book!
+    //var bookDetails: Book!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        detailBookTitleLabel.text = bookDetails?.title
-        detailBookAuthorNameLabel.text = bookDetails?.authors?[0] ?? "unknown"
+        //detailBookTitleLabel.text = bookDetails?.title
+        //detailBookAuthorNameLabel.text = bookDetails?.authors?[0] ?? "unknown"
     }
     
     

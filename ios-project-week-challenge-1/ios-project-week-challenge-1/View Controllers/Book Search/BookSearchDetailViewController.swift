@@ -19,10 +19,17 @@ class BookSearchDetailViewController: UIViewController {
     
     
     @IBAction func addToShelf(_ sender: Any) {
-        ShelvedBooksModel.shared.addNewBook(book: bookDetails!, to: "Favorites") {
-            BookshelfModel.shared.delegate?.modelDidUpdate()
+        print("button clicked")
+        if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
+            tempRef.append(bookDetails!)
+            print(tempRef)
+            SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
         }
     }
+//        ShelvedBooksModel.shared.addNewBook(book: bookDetails!, to: "Favorites") {
+//            BookshelfModel.shared.delegate?.modelDidUpdate()
+//        }
+//    }
     
     // possibly add review or summary from Google Books API, as user review
     // makes no sense on search
