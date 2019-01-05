@@ -21,7 +21,7 @@ class BookShelf: Codable, FirebaseItem {
 class AllBookShelves: Codable, FirebaseItem {
     var recordIdentifier: String = "" // Firebase
     var name: String? = "All Bookshelves"
-    var contents: [BookShelf]? = []
+    var contents: [BookShelf]? = [BookShelf(name: "Favorites")]
     var bookshelfCount: Int? { return contents?.count }
     
     func addBookshelf(bookshelf: BookShelf) {

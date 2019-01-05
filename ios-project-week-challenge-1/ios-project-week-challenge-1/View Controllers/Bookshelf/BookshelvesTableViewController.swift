@@ -11,10 +11,11 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         let newBook = Book(recordIdentifier: "", title: "The Help", authors: ["Carl Someone"], authorString: "Carl Someone", publisher: "NoBody", publishedDate: "1994", description: "Something", pageCount: 420, averageRating: 3.9, ratingsCount: 420, imageLinks: nil, imageLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", previewLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", infoLink: "http://books.google.com/books/content?id=m8EltxeVkIgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api", subtitle: "This is some BS")
         print(newBook)
         newBookshelf.contents?.append(newBook)
-        print(newBookshelf)
+        print(newBookshelf.contents)
         BookshelfModel.shared.allBookshelves.contents?.append(newBookshelf)
-        print(BookshelfModel.shared.allBookshelves.contents)
-        Firebase.save(item: newBookshelf)
+        print(BookshelfModel.shared.allBookshelves.contents?[0].name)
+        print(BookshelfModel.shared.allBookshelves.contents?[1].name ?? " ")
+        //Firebase.save(item: BookshelfModel.shared.allBookshelves)
         //Firebase.save(item: newBook)
         modelDidUpdate()
         
@@ -40,9 +41,9 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         let result = BookshelfModel.shared.allBookshelves.contents![indexPath.row]
         
         // load book cover thumbnail image from URL
-        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: (result.contents?[0].imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
+        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: (result.imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
         cell.bookShelfNameLabel.text = result.name
-        //cell.bookCountLabel.text = String(result?.bookCount)
+        cell.bookCountLabel.text = "FIXME" //String(result.bookCount!)
             return cell
         }
     
@@ -104,7 +105,7 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
     
     
     // Update the records, update Firebase, and reload data
-    override func tableView(_ tableViewPassedToUs: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         BookshelfModel.shared.updateBookshelf(at: indexPath) {
             self.tableView.reloadData()
         }
