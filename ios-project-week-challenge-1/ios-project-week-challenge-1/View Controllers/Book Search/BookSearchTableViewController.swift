@@ -73,6 +73,7 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
         
             let result = SearchResultsController.shared.searchResults[indexPath.row]
             destination.bookDetails = result
+            //destination.indexPathForBook = indexPath.row
         
     }
     

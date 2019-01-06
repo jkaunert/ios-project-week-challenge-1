@@ -5,11 +5,9 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
     
     var bookshelfDetails: [Item]?
     var bookDetails: Item?
+    var bookShelfTitleString: String?
     
     
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (bookshelfDetails?.count)!
@@ -23,9 +21,10 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
         // Configure the cell...
         let result = bookshelfDetails?[indexPath.row]
         
+        
         // load book cover thumbnail image from URL
         
-        //cell.bookEntryCoverImage.loadImageFrom(url: URL(string: (result.imageLink! ))!)
+        cell.bookEntryCoverImage.loadImageFrom(url: URL(string: (result?.volumeInfo?.imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
         cell.bookTitleLabel.text = result?.volumeInfo?.authorString
         cell.authorNameLabel.text = result?.volumeInfo?.title
         return cell
@@ -46,20 +45,19 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
 //            if let allBookshelves = allBookshelves {
 //                BookshelfModel.shared.allBookshelves.contents = allBookshelves  // breaks encapsulation, hacked it instead due to time constriants
 //                
-//                // Comment this out to show what it looks like while waiting
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-//                    self.navigationItem.titleView = nil // important to be able to see custom title
-//                    self.title = "My Bookshelves"
-//                }
+                // Comment this out to show what it looks like while waiting
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    self.navigationItem.titleView = nil // important to be able to see custom title
+                    self.title = self.bookShelfTitleString
+                }
 //            }
 //        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //BookshelfModel.shared.delegate = self
     }
     
     func modelDidUpdate() {
@@ -69,29 +67,32 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow
             else { return }
-        guard let destination = segue.destination as? ShelvedBooksTableViewController
+        guard let destination = segue.destination as? ShelvedBookDetailViewController
             else { return }
         
         destination.bookDetails = bookshelfDetails?[indexPath.row]
     }
     
     
-    // FIXME: Update the person, update Firebase, and reload data
-    override func tableView(_ tableViewPassedToUs: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        BookshelfModel.shared.updateBookshelf(at: indexPath) {
-//            self.tableView.reloadData()
-//            BookshelfModel.shared.delegate?.modelDidUpdate()
-//        }
-    }
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard editingStyle == .delete else { return }
+        if editingStyle == .delete {
+            // FIXME: Delete an item, update Firebase, update model, and reload data
+            print("delete is editingf style")
+            if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
+                tempRef.remove(at: indexPath.row)
+                print(tempRef)
+                bookshelfDetails?.remove(at: indexPath.row)
+                print(bookshelfDetails!)
+                SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+            }
+        }
         
-        // FIXME: Delete an item, update Firebase, update model, and reload data
-//        BookshelfModel.shared.deleteBookshelf(at: indexPath) {
-//            self.tableView.reloadData()
-//        }
     }
     
 }

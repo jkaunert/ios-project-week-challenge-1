@@ -24,14 +24,9 @@ struct VolumeInfo: Codable {
     let authors: [String]?
     var authorString: String {
         get {
-            guard (authors != nil) else {
-                let newValue = "Anonymous"
-                return newValue }
-            var newValue: String = ""
-            for eachAuthor in authors! {
-                newValue += eachAuthor + " "
-            }
-            return newValue
+            guard (authors != nil) else { return "Anonymous" }
+            //let newValue = authors?.joined(separator: ", ")
+            return (authors?.joined(separator: ", "))!
         }
     }
     let publisher: String?

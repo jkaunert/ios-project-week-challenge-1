@@ -13,6 +13,7 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         
     }
     
+    var indexForBook: Int?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(SearchResultsController.shared.allBookshelves.count)
@@ -29,13 +30,18 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         let resultValue = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].value
         let resultKey = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
         
-        //let whereAreYou = result.values
+        let shelfImage: String
+        // selects a random book cover from "shelved" books in that bookshelf
+        if !resultValue.isEmpty {
+            shelfImage = (resultValue.randomElement()?.volumeInfo?.imageLink)!
+        } else {
+            shelfImage = "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"
+        }
         
-        // load book cover thumbnail image from URL
-        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable")!)
-//        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: (resultValue[0].volumeInfo?.imageLink ?? "https://via.placeholder.com/128x201?text=Cover%20Image%20Unavailable"))!)
+        // load (random) book cover thumbnail image from URL
+        cell.bookShelfCoverImage.loadImageFrom(url: URL(string: shelfImage)!)
         cell.bookShelfNameLabel.text = resultKey
-        cell.bookCountLabel.text = "FIXME" //String(result.bookCount!)
+        cell.bookCountLabel.text = "Shelved Books: \(String(resultValue.count))"
             return cell
         }
     
@@ -93,6 +99,8 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
             else { return }
         let result = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].value
         destination.bookshelfDetails = result
+        destination.bookShelfTitleString = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
+        //destination.indexForBook = indexPath.row
     }
     
     
@@ -108,8 +116,11 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         guard editingStyle == .delete else { return }
         
         // Delete an item, update Firebase, update model, and reload data
-//        BookshelfModel.shared.deleteBookshelf(at: indexPath) {
-//            self.tableView.reloadData()
+//        print("delete is editingf style")
+//        if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
+//            tempRef.remove(at: indexPath.row)
+//            print(tempRef)
+//            SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
 //        }
     }
     
