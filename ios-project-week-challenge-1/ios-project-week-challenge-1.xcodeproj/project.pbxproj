@@ -166,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				ABA682EC21C2C27C001FD26F /* ShelvedBookDetailViewController.swift */,
-				ABE63CB021C06932007B9101 /* BookshelvesTableViewController.swift */,
 				ABEF3D0E21C2DF8D009EC356 /* ShelvedBooksTableViewController.swift */,
+				ABE63CB021C06932007B9101 /* BookshelvesTableViewController.swift */,
 			);
 			path = Bookshelf;
 			sourceTree = "<group>";

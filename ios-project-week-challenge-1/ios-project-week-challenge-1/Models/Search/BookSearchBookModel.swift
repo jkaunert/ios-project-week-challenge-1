@@ -19,7 +19,7 @@ enum Country: String, Codable {
 
 
 struct VolumeInfo: Codable {
-    lazy var recordIdentifier: String = " "
+    //lazy var recordIdentifier: String = ""
     let title: String?
     let authors: [String]?
     var authorString: String {
@@ -66,7 +66,7 @@ enum Language: String, Codable {
 
 
 enum CodingKeys: String, CodingKey {
-    case recordIdentifier, title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle, smallThumbnail, thumbnail, Language, language
+    case title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle, smallThumbnail, thumbnail, Language, language//, recordIdentifier
 }
 
 struct SearchResults: Codable {

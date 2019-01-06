@@ -1,11 +1,15 @@
 import Foundation
 import UIKit
 
-class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient {
+class ShelvedBooksTableViewController: UITableViewController {
+    
     
     var bookshelfDetails: [Item]?
     var bookDetails: Item?
     var bookShelfTitleString: String?
+    var indexForBook: Int?
+    var dataReceived: [Item]?
+    var shelf: String?
     
     
     
@@ -32,37 +36,42 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        shelf = bookShelfTitleString
+        bookshelfDetails = SearchResultsController.shared.allBookshelves[shelf!]
+        self.tableView.reloadData()
         navigationItem.rightBarButtonItem?.isEnabled = false
         let activity = UIActivityIndicatorView()// for indeterminate waits
         activity.style = .gray
         activity.startAnimating()
         navigationItem.titleView = activity
-        
-        
+
+        //}
         // Fetch records from Firebase and then reload the table view
         // Note: this may be significantly delayed.
 //        Firebase<BookShelf>.fetchRecords { allBookshelves in
 //            if let allBookshelves = allBookshelves {
-//                BookshelfModel.shared.allBookshelves.contents = allBookshelves  // breaks encapsulation, hacked it instead due to time constriants
-//                
-                // Comment this out to show what it looks like while waiting
+//                SearchResultsController.shared.allBookshelves = allBookshelves  // breaks encapsulation, hacked it instead due to time constriants
+
+                 //Comment this out to show what it looks like while waiting
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     self.navigationItem.titleView = nil // important to be able to see custom title
                     self.title = self.bookShelfTitleString
                 }
-//            }
+            }
 //        }
-    }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            print("view did load")
+            self.tableView.reloadData()
+            }
+        
     }
     
-    func modelDidUpdate() {
-        tableView.reloadData()
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow
@@ -71,6 +80,9 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
             else { return }
         
         destination.bookDetails = bookshelfDetails?[indexPath.row]
+        destination.indexForBook = indexPath.row
+        destination.bookshelfDetails = bookshelfDetails
+        destination.bookShelfTitleString = bookShelfTitleString
     }
     
     
@@ -78,7 +90,6 @@ class ShelvedBooksTableViewController: UITableViewController, ModelUpdateClient 
         
         if editingStyle == .delete {
             // FIXME: Delete an item, update Firebase, update model, and reload data
-            print("delete is editingf style")
             if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
                 tempRef.remove(at: indexPath.row)
                 print(tempRef)

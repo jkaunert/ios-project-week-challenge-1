@@ -1,14 +1,16 @@
 import Foundation
 import UIKit
 
-class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
+class BookshelvesTableViewController: UITableViewController {
+    
+    
     
     
     @IBAction func addNewBookshelf(_ sender: UIBarButtonItem) {
         
 //        //Firebase.save(item: BookshelfModel.shared.allBookshelves)
 //        //Firebase.save(item: newBook)
-        modelDidUpdate()
+        
         
         
     }
@@ -84,14 +86,9 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //BookshelfModel.shared.delegate = self
+
     }
     
-    func modelDidUpdate() {
-        tableView.reloadData()
-    }
-    
-    //var bookshelfDetails: Item?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow
             else { return }
@@ -100,29 +97,28 @@ class BookshelvesTableViewController: UITableViewController, ModelUpdateClient {
         let result = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].value
         destination.bookshelfDetails = result
         destination.bookShelfTitleString = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
-        //destination.indexForBook = indexPath.row
     }
     
     
-    // Update the records, update Firebase, and reload data
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        BookshelfModel.shared.updateBookshelf(at: indexPath) {
-//            self.tableView.reloadData()
-//        }
-    }
+//    // Update the records, update Firebase, and reload data
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////        BookshelfModel.shared.updateBookshelf(at: indexPath) {
+////            self.tableView.reloadData()
+////        }
+//    }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        guard editingStyle == .delete else { return }
-        
-        // Delete an item, update Firebase, update model, and reload data
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        guard editingStyle == .delete else { return }
+//
+//        // Delete an item, update Firebase, update model, and reload data
 //        print("delete is editingf style")
 //        if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
 //            tempRef.remove(at: indexPath.row)
 //            print(tempRef)
 //            SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
 //        }
-    }
+//    }
     
 }
 

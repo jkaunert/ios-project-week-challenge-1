@@ -1,9 +1,13 @@
 import Foundation
 import UIKit
 
+
 class ShelvedBookDetailViewController: UIViewController {
     
+    var bookshelfDetails: [Item]?
     var bookDetails: Item?
+    var indexForBook: Int?
+    var bookShelfTitleString: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,7 +29,15 @@ class ShelvedBookDetailViewController: UIViewController {
     }
     
     @IBAction func removeFromShelf(_ sender: Any) {
-        
+        let shelf = bookShelfTitleString!
+        if var tempRef = SearchResultsController.shared.allBookshelves[shelf] {
+            tempRef.remove(at: indexForBook!)
+            //print(tempRef)
+            SearchResultsController.shared.allBookshelves[shelf] = tempRef
+            navigationController?.popViewController(animated: true)
+            
+            
+        }
     }
     
     @IBOutlet weak var writeAReviewLabel: UILabel!

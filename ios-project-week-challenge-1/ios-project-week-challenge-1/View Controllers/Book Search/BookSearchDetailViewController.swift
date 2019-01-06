@@ -21,10 +21,11 @@ class BookSearchDetailViewController: UIViewController {
     
     @IBAction func addToShelf(_ sender: Any) {
         print("button clicked")
-        if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
+        let shelf = "Favorites"
+        if var tempRef = SearchResultsController.shared.allBookshelves[shelf] {
             tempRef.append(bookDetails!)
             print(tempRef)
-            SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
+            SearchResultsController.shared.allBookshelves[shelf] = tempRef
         }
     }
 //        ShelvedBooksModel.shared.addNewBook(book: bookDetails!, to: "Favorites") {

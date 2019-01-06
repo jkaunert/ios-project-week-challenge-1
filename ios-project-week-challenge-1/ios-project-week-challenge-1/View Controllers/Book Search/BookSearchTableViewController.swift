@@ -12,7 +12,6 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
         super.viewDidLoad()
         
         searchField.delegate = self
-        self.tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
