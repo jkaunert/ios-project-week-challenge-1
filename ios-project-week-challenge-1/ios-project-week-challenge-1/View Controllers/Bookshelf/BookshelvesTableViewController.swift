@@ -23,7 +23,7 @@ class BookshelvesTableViewController: UITableViewController {
     var bookShelfTitleString: String?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(SearchResultsController.shared.allBookshelves.count)
+        //print(SearchResultsController.shared.allBookshelves.count)
         return SearchResultsController.shared.allBookshelves.count
 
     }
@@ -115,20 +115,33 @@ class BookshelvesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         guard editingStyle == .delete else { return }
-
-        // Delete an item, update Firebase, update model, and reload data
-        let shelf = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
-        print("delete is editingf style")
-        var tempRef = SearchResultsController.shared.allBookshelves
-        tempRef[shelf] = nil
-        print(tempRef)
-        SearchResultsController.shared.allBookshelves = tempRef
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        // alert for user confirmation to delete bookshelf.
+        let bookCount = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].value.count
+        let confirmShelfDelete = UIAlertController(title: "There are \(bookCount) books still on this bookshelf. Are you sure you want to delete it?", message: "This action cannot be undone!", preferredStyle: .actionSheet)
+        
+        confirmShelfDelete.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        confirmShelfDelete.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+            
+            // Delete an item, update Firebase, update model, and reload data
+            let shelf = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
+            //print("delete is editingf style")
+            var tempRef = SearchResultsController.shared.allBookshelves
+            tempRef[shelf] = nil
+            print(tempRef)
+            SearchResultsController.shared.allBookshelves = tempRef
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }))
+        
+        self.present(confirmShelfDelete, animated: true)
         
     }
+    
+    
     
 }
 
