@@ -20,6 +20,7 @@ class BookshelvesTableViewController: UITableViewController {
     }
     
     var indexForBook: Int?
+    var bookShelfTitleString: String?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(SearchResultsController.shared.allBookshelves.count)
@@ -111,18 +112,23 @@ class BookshelvesTableViewController: UITableViewController {
 ////        }
 //    }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        guard editingStyle == .delete else { return }
-//
-//        // Delete an item, update Firebase, update model, and reload data
-//        print("delete is editingf style")
-//        if var tempRef = SearchResultsController.shared.allBookshelves["Favorites"] {
-//            tempRef.remove(at: indexPath.row)
-//            print(tempRef)
-//            SearchResultsController.shared.allBookshelves["Favorites"] = tempRef
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        guard editingStyle == .delete else { return }
+
+        // Delete an item, update Firebase, update model, and reload data
+        let shelf = Array(SearchResultsController.shared.allBookshelves)[indexPath.row].key
+        print("delete is editingf style")
+        var tempRef = SearchResultsController.shared.allBookshelves
+        tempRef[shelf] = nil
+        print(tempRef)
+        SearchResultsController.shared.allBookshelves = tempRef
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
     
 }
 
