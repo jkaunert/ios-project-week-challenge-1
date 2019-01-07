@@ -403,13 +403,13 @@
                                 <rect key="frame" x="30" y="293" width="315" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Long Book Title name thats really long. So long in fact that we have to truncate it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ne-UZ-9kH">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="29.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Author Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLC-nL-F7i">
-                                        <rect key="frame" x="99" y="37.5" width="117.5" height="19.5"/>
+                                        <rect key="frame" x="99" y="57" width="117.5" height="0.0"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -506,6 +506,7 @@
                         <outlet property="detailBookCoverImageView" destination="kwn-VX-9ix" id="qSI-l6-dPA"/>
                         <outlet property="detailBookTitleLabel" destination="4Ne-UZ-9kH" id="CRf-c6-iKD"/>
                         <outlet property="didReadStatusLabel" destination="Yho-TZ-bdt" id="gLL-tD-VvV"/>
+                        <outlet property="didReadSwitch" destination="qDJ-Mp-STQ" id="WOG-Po-E8E"/>
                         <outlet property="userReviewTextView" destination="Z6V-YY-qba" id="WTN-uq-Pst"/>
                         <outlet property="writeAReviewLabel" destination="3Vg-CO-9kv" id="gn4-6f-j0l"/>
                     </connections>

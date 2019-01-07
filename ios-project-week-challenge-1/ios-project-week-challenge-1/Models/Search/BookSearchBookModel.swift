@@ -10,7 +10,7 @@ struct BookSearch: Codable {
 struct Item: Codable {
     let id, etag: String?
     let selfLink: String?
-    let volumeInfo: VolumeInfo?
+    var volumeInfo: VolumeInfo?
 }
 
 enum Country: String, Codable {
@@ -19,7 +19,9 @@ enum Country: String, Codable {
 
 
 struct VolumeInfo: Codable {
-    //lazy var recordIdentifier: String = ""
+    lazy var recordIdentifier: String = ""
+    lazy var userReview: String = "Add Your Review Here..."
+    lazy var hasRead: Bool = false
     let title: String?
     let authors: [String]?
     var authorString: String {
@@ -66,7 +68,7 @@ enum Language: String, Codable {
 
 
 enum CodingKeys: String, CodingKey {
-    case title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle, smallThumbnail, thumbnail, Language, language//, recordIdentifier
+    case title, authors, publisher, publishedDate, description, pageCount, averageRating, ratingsCount, previewLink, infoLink, subtitle, smallThumbnail, thumbnail, Language, language, recordIdentifier
 }
 
 struct SearchResults: Codable {
