@@ -35,20 +35,31 @@ class ShelvedBookDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var didReadStatusLabel: UILabel!
     @IBOutlet weak var didReadSwitch: UISwitch!
     @IBAction func didReadStatusSwitch(_ sender: Any) {
-        if didReadSwitch.isOn == true {
-            didReadSwitch.isOn = false
+        if didReadSwitch.isOn == false {
+            //didReadSwitch.isOn = false
+            if var tempRef = SearchResultsController.shared.allBookshelves["Already Read"] {
+                tempRef.remove(at: indexForBook!)
+                //print(tempRef)
+                SearchResultsController.shared.allBookshelves["Already Read"] = tempRef
+   
+            }
             let shelf = bookShelfTitleString!
             if var tempRef = SearchResultsController.shared.allBookshelves[shelf] {
                 tempRef[indexForBook!].volumeInfo?.hasRead = false
-                //print("turning off! \(tempRef[indexForBook!].volumeInfo?.hasRead)")
+                
                 SearchResultsController.shared.allBookshelves[shelf] = tempRef
             }
         } else {
-            didReadSwitch.isOn = true
+            //didReadSwitch.isOn = true
+            if var tempRef = SearchResultsController.shared.allBookshelves["Already Read"] {
+                tempRef.append(bookDetails!)
+                //print(tempRef)
+                SearchResultsController.shared.allBookshelves["Already Read"] = tempRef
+            }
             let shelf = bookShelfTitleString!
             if var tempRef = SearchResultsController.shared.allBookshelves[shelf] {
                 tempRef[indexForBook!].volumeInfo?.hasRead = true
-                //print("turning on! \(tempRef[indexForBook!].volumeInfo?.hasRead)")
+                
                 SearchResultsController.shared.allBookshelves[shelf] = tempRef
             }
         }

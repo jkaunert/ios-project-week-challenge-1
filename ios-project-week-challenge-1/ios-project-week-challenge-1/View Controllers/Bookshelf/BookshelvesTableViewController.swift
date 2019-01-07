@@ -7,7 +7,11 @@ class BookshelvesTableViewController: UITableViewController {
     
     
     @IBAction func addNewBookshelf(_ sender: UIBarButtonItem) {
+        SearchResultsController.shared.addBookshelf()
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
 //        //Firebase.save(item: BookshelfModel.shared.allBookshelves)
 //        //Firebase.save(item: newBook)
         

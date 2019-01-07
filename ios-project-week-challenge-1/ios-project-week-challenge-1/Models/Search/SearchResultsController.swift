@@ -10,8 +10,16 @@ class SearchResultsController {
     let key = "AIzaSyCWBbRuIyE8lAmu-s-U1mJLKkDi_fldYDQ"
     let testURL: URL! = URL(string: "https://www.googleapis.com/books/v1/volumes?q=Star%20wars&intitle:=Star%20wars&maxResults=40&key=AIzaSyCWBbRuIyE8lAmu-s-U1mJLKkDi_fldYDQ")
     var searchResults: [Item] = []
-    var allBookshelves: [String : [Item]] = ["Favorites" : []]
+    var allBookshelves: [String : [Item]] = ["Favorites" : [], "Already Read" : []]
     
+    func addBookshelf(name: String = "you forgot to name the shelf stoopid."){
+        allBookshelves[name] = []
+        
+    }
+    func removeBookshelf(name: String){
+        allBookshelves[name] = nil
+        
+    }
     func performSearch(with searchTerm: String, resultType: ResultType, completion: @escaping ([Item]?, Error?) -> Void) {
         self.searchResults = []
         // base URL for search
